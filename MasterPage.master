@@ -1,0 +1,101 @@
+<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="lgMasterPage" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+  <title>ISGEC-DMS</title>
+  <link rel="SHORTCUT ICON" type="image/x-icon" runat="server" href="~/isgec.ico" />
+  <link href="fa-5.15.3/css/all.css" rel="stylesheet" />
+  <link href="App_Themes/Default/Menu.css" rel="stylesheet" />
+  <script type="text/javascript" src="/../UserRights/jq3.6/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/../UserRights/jq3.6/jqui1.12/themes/smoothness/jquery-ui.css" />
+  <script type="text/javascript" src="/../UserRights/jq3.6/jqui1.12/jquery-ui.js"></script>
+  <link href="App_Themes/Default/Buttons.css" rel="stylesheet" />
+  <script type="text/javascript">
+    $(function () {
+      $(".page").resizable();
+      $(".dragit").draggable({
+        iframeFix: true
+      });
+    });
+    $(window).resize(function () {
+      var menuH=0;
+      try { menuH = document.getElementById('cssmenu').style.height; menuH = 27; } catch (x) { }
+      try{
+        document.getElementById('mainsisBody').style.height = (window.innerHeight - 130 - menuH) + 'px';
+        document.getElementById('splitSection').style.height = (window.innerHeight - 130 - menuH) + 'px';
+      } catch (x) { }
+    });
+  </script>
+  <asp:ContentPlaceHolder ID="cphMain" runat="server" EnableViewState="true">
+  </asp:ContentPlaceHolder>
+</head>
+<body>
+  <form id="form1" runat="server">
+    <asp:ScriptManager ID="ToolkitScriptManager1" EnableScriptGlobalization="true" runat="server" EnablePageMethods="true" AsyncPostBackTimeout="3600" EnableScriptLocalization="True" ScriptMode="Auto">
+      <Scripts>
+        <asp:ScriptReference Path="/../UserRights/jq3.6/webkit.js" />
+      </Scripts>
+    </asp:ScriptManager>
+    <LGM:LGLoading ID="LGLoadingM" runat="server" />
+    <script type="text/javascript">
+      Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideProcessingMPV);
+      Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(showProcessingMPV);
+      function groupClicked(p) {
+        var tbl = p.parentElement.parentElement;
+        var o = p.parentElement.rowIndex;
+        for (ii = 0; ii <= tbl.rows.length - 1; ii++) {
+          if (ii > o) {
+            if (tbl.rows[ii].id != '')
+              return;
+            if (tbl.rows[ii].style.display == 'none')
+              tbl.rows[ii].style.display = '';
+            else
+              tbl.rows[ii].style.display = 'none';
+          }
+        }
+      }
+      function dc(o, p) {
+        var dec = /^-?\d+(?:\.\d{0,6})?$/;
+        var v = o.value;
+        if (v.match(dec)) {
+          o.value = parseFloat(v).toFixed(p);
+        } else {
+          o.value = parseFloat('0').toFixed(p);
+        }
+      }
+    </script>
+    <div style="display: flex;flex-direction: column;">
+      <%--Header--%>
+      <div class="sis_login" style="display: flex;flex-direction: row;justify-content:space-between;">
+        <div>
+          <asp:Image ID="any" runat="server" AlternateText="logo" Height="60px" style="opacity:0.7;border-top-left-radius:10px;" ImageUrl="~/Images/Isgec2.JPG" />
+        </div>
+        <div>
+          <LGM:LoginLine ID="LoginLine1" runat="server" />
+        </div>
+      </div>
+      <%--Menu--%>
+      <div id="algmnu" runat="server"></div>
+      <%--Body--%>
+      <div id="mainsisBody" class="sis-body">
+        <asp:ContentPlaceHolder ID="cph1" runat="server" EnableViewState="true" />
+      </div>
+      <%--Footer--%>
+      <div class="sis_footer" style="display: flex;flex-direction: column;">
+        <div>
+          <span>© ISGEC Heavy Engineering Limited. All rights reserved.</span>
+        </div>
+        <div>
+          <span >A-4, Sector-24, NOIDA, U.P. 201 301, INDIA </span>
+        </div>
+        <div>
+          <span>Designed &amp; Developed by:</span> <span style="color:#88b8de">ISGEC IT Team</span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script>
+    $(window).trigger('resize');
+  </script>
+</body>
+</html>

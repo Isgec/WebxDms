@@ -1,0 +1,100 @@
+﻿.nt-but-silver{
+  border:1pt solid #bdbcbc;
+  background-color:#f1f1f1;
+}
+    .nt-but-coral{
+      border: 1pt solid #fc2993;
+      background-color: #fc57aa;
+      color: white;
+    }
+
+    .nt-but-lime{
+      border: 1pt solid #44b10b;
+      background-color: #58d815;
+      color: white;
+    }
+
+    .nt-but-cadet{
+      border: 1pt solid #506193;
+      background-color: #7c8293;
+      color: white;
+    }
+
+    .nt-chk-danger{
+      border: 1pt solid #FF99CC;
+      background-color: #FFEBCD;
+      color: #000066;
+    }
+    .nt-but-danger {
+      border: 1pt solid #960825;
+      background-color: #d1062f;
+      color: white;
+    }
+
+    .nt-but-primary {
+      border: 1pt solid #5780f8;
+      background-color: #2196F3;
+      color: white;
+    }
+    .nt-but-gray {
+      border: 1pt solid gray;
+      background-color: #bdbcbc;
+      color: black;
+    }
+
+    .nt-but-grey {
+      border: 1pt solid gray;
+      background-color: #bdbcbc;
+      color: black;
+      cursor:pointer;
+    }
+
+    .nt-but-success {
+      border: 1pt solid #049317;
+      background-color: #06bf1e;
+      color: white;
+    }
+
+    .nt-but-warning {
+      border: 1pt solid #eab402;
+      background-color: #ffc300;
+      color: white;
+    }
+
+    .nt-but-killer {
+      border: 1pt solid #12fa30;
+      background-color: #f86d0a;
+      color: white;
+    }
+    .nt-but-silver,
+    .nt-but-coral,
+    .nt-but-lime,
+    .nt-but-cadet,
+    .nt-chk-danger,
+    .nt-but-killer,
+    .nt-but-danger,
+    .nt-but-grey,
+    .nt-but-primary,
+    .nt-but-warning,
+    .nt-but-success {
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 4px;
+      text-align:center;
+      min-height:14px;
+      cursor:pointer;
+    }
+    .nt-but-silver:hover,
+    .nt-but-coral:hover,
+    .nt-but-lime:hover,
+    .nt-but-cadet:hover,
+    .nt-but-killer:hover,
+    .nt-but-danger:hover,
+    .nt-but-grey:hover,
+    .nt-but-primary:hover,
+    .nt-but-warning:hover,
+    .nt-but-success:hover {
+      border: 1pt solid orange;
+      opacity: 0.7;
+    }
