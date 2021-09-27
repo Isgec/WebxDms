@@ -60,6 +60,10 @@ var script_xDmsHFiles = {
       sender._contextKey = '';
     },
     ACEStatusID_Populated: function(sender,e) {
+      var x = sender._completionListElement.childNodes;
+      for (var i = 0, h; h = x[i]; i++) {
+        h.innerHTML = h.innerText;
+      }
       var p = sender.get_element();
       p.style.backgroundImage  = 'none';
     },

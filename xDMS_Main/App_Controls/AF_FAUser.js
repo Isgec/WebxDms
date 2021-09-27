@@ -109,7 +109,7 @@ var script_xDmsFolderAuthorizations = {
       var Prefix = sender._element.id.replace('UploadedStatusID','');
       var F_UploadedStatusID = $get(sender._element.id);
       var F_UploadedStatusID_Display = $get(sender._element.id + '_Display');
-      var retval = e.get_value();
+      var retval = (!e._value) ? e._item.parentElement.parentElement._value : e._value;
       var p = retval.split('|');
       F_UploadedStatusID.value = p[0];
       F_UploadedStatusID_Display.innerHTML = e.get_text();
@@ -123,6 +123,7 @@ var script_xDmsFolderAuthorizations = {
       sender._contextKey = '';
     },
     ACEUploadedStatusID_Populated: function(sender,e) {
+      var x = sender._completionListElement.childNodes;for (var i = 0, h; h = x[i]; i++) {h.innerHTML = h.innerText;}
       var p = sender.get_element();
       p.style.backgroundImage  = 'none';
     },

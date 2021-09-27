@@ -460,6 +460,13 @@
                 <ItemStyle CssClass="alignleft" />
                 <HeaderStyle CssClass="alignleft" Width="100px" />
               </asp:TemplateField>
+              <asp:TemplateField HeaderText="Status On" SortExpression="[xDMS_Files].[StatusOn]">
+                <ItemTemplate>
+                  <asp:Label ID="LabelStatusOn" runat="server" ForeColor='<%# Eval("ForeColor") %>' Text='<%# Bind("StatusOn") %>'></asp:Label>
+                </ItemTemplate>
+                <ItemStyle CssClass="alignCenter" />
+              <HeaderStyle CssClass="alignCenter" Width="100px" />
+              </asp:TemplateField>
               <asp:TemplateField HeaderText="Status" SortExpression="[xDMS_States5].[StatusName]">
                 <ItemTemplate>
                   <asp:Label ID="L_StatusID" runat="server" ForeColor='<%# EVal("ForeColor") %>' Title='<%# EVal("StatusID") %>' Text='<%# Eval("xDMS_States5_StatusName") %>'></asp:Label>

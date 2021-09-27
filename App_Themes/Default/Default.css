@@ -316,6 +316,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3bead', end
   width: 350px !important;
 }
 /* AutoComplete highlighted item */
+.listItem{
+  display:flex;
+}
+.listItem>div{
+  font-size:11px;
+}
+.listItem:hover{
+  background-color:#D8000C;
+  color:white;
+}
 .autocomplete_highlightedListItem {
   background-color: #0033CC;
   color: #FFFFFF;

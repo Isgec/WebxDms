@@ -124,7 +124,8 @@ Partial Class EF_xDmsFolders
   Public Shared Function validate_FK_xDMS_Folders_StatusID(ByVal value As String) As String
     Dim aVal() As String = value.Split(",".ToCharArray)
     Dim mRet As String="0|" & aVal(0)
-    Dim StatusID As Int32 = CType(aVal(1),Int32)
+    Dim StatusID As Integer = 0
+    If Not Integer.TryParse(aVal(1), StatusID) Then StatusID = 0
     Dim oVar As SIS.xDMS.xDmsStates = SIS.xDMS.xDmsStates.xDmsStatesGetByID(StatusID)
     If oVar Is Nothing Then
       mRet = "1|" & aVal(0) & "|Record not found." 

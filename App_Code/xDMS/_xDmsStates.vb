@@ -10,6 +10,7 @@ Namespace SIS.xDMS
     Public Property StatusID As Int32 = 0
     Public Property StatusName As String = ""
     Public Property BaseStatusID As String = ""
+    Public Property BaseName As String = ""
     Public ReadOnly Property ForeColor() As System.Drawing.Color
       Get
         Dim mRet As System.Drawing.Color = Drawing.Color.Blue
@@ -244,7 +245,14 @@ Namespace SIS.xDMS
           End If
           While (Reader.Read())
             Dim Tmp As SIS.xDMS.xDmsStates = New SIS.xDMS.xDmsStates(Reader)
-            Results.Add(AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem(Tmp.DisplayField, Tmp.PrimaryKey))
+            Dim str As String = ""
+            str &= "<div class='listItem'>"
+            str &= "  <div style='width:150px;'>" & Tmp.StatusName
+            str &= "  </div>"
+            str &= "  <div style='width:150px;'>" & Tmp.BaseName
+            str &= "  </div>"
+            str &= "</div>"
+            Results.Add(AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem(str, Tmp.PrimaryKey))
           End While
           Reader.Close()
         End Using

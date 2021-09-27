@@ -141,7 +141,7 @@ Partial Class GF_xDmsFiles
       "function ACEStatusID_Selected(sender, e) {" &
       "  var F_StatusID = $get('" & F_StatusID.ClientID & "');" &
       "  var F_StatusID_Display = $get('" & F_StatusID_Display.ClientID & "');" &
-      "  var retval = e.get_value();" &
+      "  var retval = (!e._value) ? e._item.parentElement.parentElement._value : e._value;" &
       "  var p = retval.split('|');" &
       "  F_StatusID.value = p[0];" &
       "  F_StatusID_Display.innerHTML = e.get_text();" &
@@ -158,7 +158,7 @@ Partial Class GF_xDmsFiles
       "  p.style.backgroundPosition = 'right';" &
       "  o._contextKey = '';" &
       "}" &
-      "function ACEStatusID_Populated(o,e) {" &
+      "function ACEStatusID_Populated(o,e) {var x = o._completionListElement.childNodes;for (var i = 0, h; h = x[i]; i++) {h.innerHTML = h.innerText;}" &
       "  var p = $get('" & F_StatusID.ClientID & "');" &
       "  p.style.backgroundImage  = 'none';" &
       "}" &
@@ -450,7 +450,8 @@ Partial Class GF_xDmsFiles
   Public Shared Function validate_FK_xDMS_Files_ParentFileID(ByVal value As String) As String
     Dim aVal() As String = value.Split(",".ToCharArray)
     Dim mRet As String = "0|" & aVal(0)
-    Dim ParentIFileID As Int32 = CType(aVal(1), Int32)
+    Dim ParentIFileID As Int32 = 0
+    Integer.TryParse(aVal(1), ParentIFileID)
     Dim oVar As SIS.xDMS.xDmsFiles = SIS.xDMS.xDmsFiles.xDmsFilesGetByID(ParentIFileID)
     If oVar Is Nothing Then
       mRet = "1|" & aVal(0) & "|Record not found."
@@ -463,7 +464,8 @@ Partial Class GF_xDmsFiles
   Public Shared Function validate_FK_xDMS_Files_FolderID(ByVal value As String) As String
     Dim aVal() As String = value.Split(",".ToCharArray)
     Dim mRet As String = "0|" & aVal(0)
-    Dim FolderID As Int32 = CType(aVal(1), Int32)
+    Dim FolderID As Int32 = 0
+    Integer.TryParse(aVal(1), FolderID)
     Dim oVar As SIS.xDMS.xDmsFolders = SIS.xDMS.xDmsFolders.xDmsFoldersGetByID(FolderID)
     If oVar Is Nothing Then
       mRet = "1|" & aVal(0) & "|Record not found."
@@ -476,7 +478,8 @@ Partial Class GF_xDmsFiles
   Public Shared Function validate_FK_xDMS_Files_StatusID(ByVal value As String) As String
     Dim aVal() As String = value.Split(",".ToCharArray)
     Dim mRet As String = "0|" & aVal(0)
-    Dim StatusID As Int32 = CType(aVal(1), Int32)
+    Dim StatusID As Int32 = 0
+    Integer.TryParse(aVal(1), StatusID)
     Dim oVar As SIS.xDMS.xDmsStates = SIS.xDMS.xDmsStates.xDmsStatesGetByID(StatusID)
     If oVar Is Nothing Then
       mRet = "1|" & aVal(0) & "|Record not found."

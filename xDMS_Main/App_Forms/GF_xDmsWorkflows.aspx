@@ -40,8 +40,8 @@
           <ItemTemplate>
             <asp:Label ID="LabelWorkflowName" runat="server" ForeColor='<%# EVal("ForeColor") %>' Text='<%# Bind("WorkflowName") %>'></asp:Label>
           </ItemTemplate>
-          <ItemStyle CssClass="alignCenter" />
-        <HeaderStyle CssClass="alignCenter" Width="100px" />
+          <ItemStyle CssClass="alignleft" />
+        <HeaderStyle CssClass="alignleft" Width="200px" />
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Parent Workflow" SortExpression="[xDMS_Workflows5].[WorkflowName]">
           <ItemTemplate>

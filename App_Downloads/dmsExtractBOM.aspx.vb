@@ -30,11 +30,10 @@ Partial Class dmsExtractBOM
         If x.StartsWith("Tran") Then TranID = x.Split(":".ToCharArray)(1)
       Next
     End If
+    'if keyword engfumc not found then extract bom called from project
+    'if engfunc present then called from eng function with in project
+    If EngFunc <> "" Then EngFunc = FolderID
 
-    'If Request.QueryString("ProjectID") IsNot Nothing Then ProjectID = Request.QueryString("ProjectID")
-    'If Request.QueryString("Comp") IsNot Nothing Then Comp = Request.QueryString("Comp")
-    'If Request.QueryString("EngFunc") IsNot Nothing Then EngFunc = Request.QueryString("EngFunc")
-    'If Request.QueryString("TranID") IsNot Nothing Then TranID = Request.QueryString("TranID")
     If ProjectID <> "" Then
       Dim DownloadName As String = ""
       Dim FileName As String = DownloadLive(ProjectID, EngFunc, TranID, Comp, DownloadName)

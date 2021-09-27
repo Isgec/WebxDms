@@ -117,33 +117,33 @@ Partial Class GF_xDmsFiles
         F_StatusID.Text = Session("F_StatusID")
       End If
     End If
-    Dim strScriptStatusID As String = "<script type=""text/javascript""> " & _
-      "function ACEStatusID_Selected(sender, e) {" & _
-      "  var F_StatusID = $get('" & F_StatusID.ClientID & "');" & _
-      "  var F_StatusID_Display = $get('" & F_StatusID_Display.ClientID & "');" & _
-      "  var retval = e.get_value();" & _
-      "  var p = retval.split('|');" & _
-      "  F_StatusID.value = p[0];" & _
-      "  F_StatusID_Display.innerHTML = e.get_text();" & _
-      "}" & _
+    Dim strScriptStatusID As String = "<script type=""text/javascript""> " &
+      "function ACEStatusID_Selected(sender, e) {" &
+      "  var F_StatusID = $get('" & F_StatusID.ClientID & "');" &
+      "  var F_StatusID_Display = $get('" & F_StatusID_Display.ClientID & "');" &
+      "  var retval = (!e._value) ? e._item.parentElement.parentElement._value : e._value;" &
+      "  var p = retval.split('|');" &
+      "  F_StatusID.value = p[0];" &
+      "  F_StatusID_Display.innerHTML = e.get_text();" &
+      "}" &
       "</script>"
-      If Not Page.ClientScript.IsClientScriptBlockRegistered("F_StatusID") Then
+    If Not Page.ClientScript.IsClientScriptBlockRegistered("F_StatusID") Then
         Page.ClientScript.RegisterClientScriptBlock(GetType(System.String), "F_StatusID", strScriptStatusID)
       End If
-    Dim strScriptPopulatingStatusID As String = "<script type=""text/javascript""> " & _
-      "function ACEStatusID_Populating(o,e) {" & _
-      "  var p = $get('" & F_StatusID.ClientID & "');" & _
-      "  p.style.backgroundImage  = 'url(../../images/loader.gif)';" & _
-      "  p.style.backgroundRepeat= 'no-repeat';" & _
-      "  p.style.backgroundPosition = 'right';" & _
-      "  o._contextKey = '';" & _
-      "}" & _
-      "function ACEStatusID_Populated(o,e) {" & _
-      "  var p = $get('" & F_StatusID.ClientID & "');" & _
-      "  p.style.backgroundImage  = 'none';" & _
-      "}" & _
+    Dim strScriptPopulatingStatusID As String = "<script type=""text/javascript""> " &
+      "function ACEStatusID_Populating(o,e) {" &
+      "  var p = $get('" & F_StatusID.ClientID & "');" &
+      "  p.style.backgroundImage  = 'url(../../images/loader.gif)';" &
+      "  p.style.backgroundRepeat= 'no-repeat';" &
+      "  p.style.backgroundPosition = 'right';" &
+      "  o._contextKey = '';" &
+      "}" &
+      "function ACEStatusID_Populated(o,e) {var x = sender._completionListElement.childNodes;for (var i = 0, h; h = x[i]; i++) {h.innerHTML = h.innerText;}" &
+      "  var p = $get('" & F_StatusID.ClientID & "');" &
+      "  p.style.backgroundImage  = 'none';" &
+      "}" &
       "</script>"
-      If Not Page.ClientScript.IsClientScriptBlockRegistered("F_StatusIDPopulating") Then
+    If Not Page.ClientScript.IsClientScriptBlockRegistered("F_StatusIDPopulating") Then
         Page.ClientScript.RegisterClientScriptBlock(GetType(System.String), "F_StatusIDPopulating", strScriptPopulatingStatusID)
       End If
     F_ParentIFileID_Display.Text = String.Empty
