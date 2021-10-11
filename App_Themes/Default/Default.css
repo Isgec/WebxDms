@@ -176,17 +176,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3bead', end
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 );
 }
 
-.dmychk, .dmytxt {
+.dmychk{
   border: #5F9EA0 1pt solid;
   background-color: #e3e0df;
-  padding: 6px 3px 1px 3px;
+  padding:7px 3px 1px 1px;
+  color: #000066;
+}
+.dmytxt {
+  border: #5F9EA0 1pt solid;
+  background-color: #e3e0df;
   color: #000066;
 }
 
 .mychk {
   border: 1pt solid #FF99CC;
   background-color: #FFEBCD;
-  padding:3px;
+  padding:7px 3px 1px 1px;
   color: #000066;
 }
 

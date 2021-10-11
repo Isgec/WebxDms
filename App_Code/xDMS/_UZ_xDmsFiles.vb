@@ -155,6 +155,12 @@ Namespace SIS.xDMS
                 mRet = True
               End If
           End Select
+          If mRet = False Then
+            'Initial Status = Upload Status
+            If FK_xDMS_Files_FolderID.UploadedStatusID = StatusID Then
+              mRet = True
+            End If
+          End If
         Catch ex As Exception
         End Try
         Return mRet
